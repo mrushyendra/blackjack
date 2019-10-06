@@ -22,7 +22,6 @@ Suit Card::getSuit(){
 }
 
 /* Deck related functions */
-
 Deck::Deck(vector<string> names, vector<int> pts){
     for(unsigned int i = SUIT_MIN; i <= SUIT_MAX; ++i){
         Suit suit = static_cast<Suit>(i);
@@ -51,6 +50,7 @@ void Deck::addCardTop(Card c){
     m_cards.push_front(c);
 }
 
+// Uses Mersenne Twister seed generator, and a Uniform Distribution
 void Deck::shuffle(){
     random_device rd;
     mt19937 rng(rd());

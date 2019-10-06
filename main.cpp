@@ -20,10 +20,14 @@ int main(int argc, char** argv){
     Deck deck = createBlackJackDeck();
     deck.shuffle();
 
+    //Initialize player and dealer, and add available moves
     unordered_map<string, Action> playerMoves({{"Double", doubleMove}, {"Stand", stand}, {"Hit", hit}});
     unordered_map<string, Action> dealerMoves({{"CheckBlackJack", checkBlackJack}, {"GetMoreThan16", getMoreThan16}});
     Player player(vector<Card>(), vector<Card>(), playerMoves, deck, 500);
     Dealer dealer(vector<Card>(), vector<Card>(), dealerMoves, deck);
+    player.setCompetitor(&dealer);
+    dealer.setCompetitor(&player);
+
     int round = 0;
 
     while(player.cash > 0){
@@ -64,15 +68,15 @@ int main(int argc, char** argv){
         }
     }
 
-    cout << "Game Over!. You are left with: $" << max(0, player.cash) << endl;
+    cout << "Game Over! You are left with: $" << max(0, player.cash) << endl;
     return 0;
 }
 
+// Determines who wins among `player` and `dealer`, if any, and deals with player's wager appropriately. (Assumes Even odds)
 int handleResult(Player& player, Agent& dealer, int playerScore, int dealerScore){
     if(playerScore <= 21 && ((playerScore > dealerScore) || (dealerScore > 21))){ //win
-        playerScore += player.wager;
+        player.cash += player.wager;
         player.wager = 0;
-        player.cash += playerScore;
         return 2;
     } else if ((dealerScore <= 21) && ((playerScore > 21) || (playerScore < dealerScore))) { //lose
         player.cash -= player.wager;
@@ -82,6 +86,7 @@ int handleResult(Player& player, Agent& dealer, int playerScore, int dealerScore
     return 1; //draw
 }
 
+// Outputs `player`'s available cash, and face up cards of both players to stdout.
 void showState(Player& player, Dealer& dealer){
     cout << "Cash: $" << player.cash << endl;
     cout << "Your cards: " << player.m_ownHand << endl << "Dealer's Cards: " << dealer.m_ownHand << endl;

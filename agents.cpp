@@ -64,18 +64,17 @@ int Player::askWager(){
         if(status == 0){
             cout << "How much would you like to wager in this round? Please enter a number." << endl;
         } else {
-            cout << "Sorry, you can't bet more than you currently have. Please enter a new wager." << endl;
+            cout << "Sorry, you can't bet this amount of money. Please enter a new wager." << endl;
         }
         string response;
         getline(cin, response);
         stringstream ss(response);
         int amount = 0;
         ss >> amount;
-        if(amount > this->cash){
+        if(amount > this->cash || amount < 0){
             status = 1;
         } else {
             this->wager = amount;
-            this->cash -= amount;
             break;
         }
     }
@@ -83,10 +82,9 @@ int Player::askWager(){
     return 0;
 }
 
-int Player::pickCards(Deck& deck){
+void Player::pickCards(Deck& deck){
     m_ownHand.m_faceUp.push_back(m_deck.getCard());
     m_ownHand.m_faceUp.push_back(m_deck.getCard());
-    return 0;
 }
 
 string Player::getAction(){
@@ -133,8 +131,7 @@ int Dealer::play(){
     return m_actions["GetMoreThan16"](this, this->m_other, this->m_deck);
 }
 
-int Dealer::pickCards(Deck& deck){
+void Dealer::pickCards(Deck& deck){
     m_ownHand.m_faceUp.push_back(m_deck.getCard());
     m_ownHand.m_faceDown.push_back(m_deck.getCard());
-    return 0;
 }
