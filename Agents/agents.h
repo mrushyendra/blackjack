@@ -3,7 +3,7 @@
 
 #include <string>
 #include <unordered_map>
-#include "card.h"
+#include "../Cards/card.h"
 
 using namespace std;
 

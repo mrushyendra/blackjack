@@ -1,4 +1,4 @@
-## Terminal Single Player Blackjack
+## Single Player Blackjack on the Terminal
 ---
 #### About
 Hit or Stand! The aim of Blackjack is to beat the Dealer's score by drawing a greater hand under 21. In this version of the game, the player 
@@ -8,6 +8,8 @@ starts off with $500 and can decide between 3 moves - Hit, Stand, or Double - in
 Format: ![Alt Text](url)
 
 #### Playing The Game
+The game can be played with minimal dependencies on any linux or mac platform. To run the game, follow the instructions below:
+
 1. Clone the project
 
 `https://github.com/mrushyendra/blackjack.git`

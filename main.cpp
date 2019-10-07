@@ -6,9 +6,9 @@
 #include <random>
 #include <deque>
 #include <unordered_map>
-#include "card.h"
-#include "agents.h"
-#include "actions.h"
+#include "Cards/card.h"
+#include "Agents/agents.h"
+#include "Actions/actions.h"
 
 using namespace std;
 

@@ -4,7 +4,7 @@
 #include <random>
 #include <deque>
 #include <unordered_map>
-#include "card.h"
+#include "../Cards/card.h"
 #include "agents.h"
 
 using namespace std;

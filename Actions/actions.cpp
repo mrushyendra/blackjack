@@ -1,7 +1,7 @@
 #include <iostream>
 #include "actions.h"
-#include "agents.h"
-#include "card.h"
+#include "../Agents/agents.h"
+#include "../Cards/card.h"
 
 using namespace std;
 

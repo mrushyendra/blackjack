@@ -1,8 +1,8 @@
 #ifndef ACTIONS_H
 #define ACTIONS_H
 
-#include "agents.h"
-#include "card.h"
+#include "../Agents/agents.h"
+#include "../Cards/card.h"
 
 using namespace std;
 
