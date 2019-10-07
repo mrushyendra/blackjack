@@ -13,7 +13,16 @@
 int compareScores(int playerScore, int dealerScore, int expectedPl, int expectedDl);
 
 /* Test suite. Can potentially be extended to take in multiple different gameplay scenarios, and unit tests for individual functions */
-int main(int arg, char** argv){
+int main(int argc, char** argv){
+    if(argc != 2){
+        return 0;
+    }
+
+    char* testMode = argv[1];
+    if(testMode[0] != '1'){
+        return 0; //to do: add more test modes
+    }
+
     Deck deck = createBlackJackDeck();
     deck.fixedShuffle(500);
 
