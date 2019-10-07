@@ -5,7 +5,6 @@ Hit or Stand! The aim of Blackjack is to beat the Dealer's score by drawing a gr
 starts off with $500 and can decide between 3 moves - Hit, Stand, or Double - in each round. 
 
 ![Screenshot of Game](./screenshot.png)
-Format: ![Alt Text](url)
 
 #### Playing The Game
 The game can be played with minimal dependencies on any linux or mac platform. To run the game, follow the instructions below:
